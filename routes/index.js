@@ -22,7 +22,13 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/destinput', function (req, res) {
-  res.render('destinput', { title: 'ejs' })
+  res.render('INDIA', { title: 'ejs' })
+});
+
+router.get('/city/:id', function (req, res) {
+	var city = req.params.id
+	console.log(city);
+  res.render(city, { title: 'ejs' })
 });
 
 router.get('/destination/:id', function(req, res) {
