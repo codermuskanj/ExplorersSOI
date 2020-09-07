@@ -26,7 +26,7 @@ router.get('/destinput', function (req, res) {
 });
 
 router.get('/city/:id', function (req, res) {
-	var city = req.params.id
+	var city = req.params.id.toUpperCase();
 	console.log(city);
   res.render(city, { title: 'ejs' })
 });
@@ -41,7 +41,7 @@ router.get('/destination/:id', function(req, res) {
 	  .on('data', (row) => {
 	    spot = row['TouristSpot'];
 	    if(spot == input){
-	    	var city = row['CityName'];
+	    	var city = capital_letter(row['CityName']);
 	    var dscrp = row['Description'];
 	    var img = row ['Images'].split(',');
 	    for (i in img){
