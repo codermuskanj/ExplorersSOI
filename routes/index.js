@@ -36,20 +36,22 @@ router.get('/destination/:id', function(req, res) {
 	/*var input = req.body.ipcity.toLowerCase();*/ 
 	var input = capital_letter(req.params.id);
 	var spot;
-	fs.createReadStream('data.csv')
+	fs.createReadStream('data/data_india.csv')
 	  .pipe(csv())
 	  .on('data', (row) => {
 	    spot = row['TouristSpot'];
 	    if(spot == input){
 	    	var city = capital_letter(row['CityName']);
 	    var dscrp = row['Description'];
+	    var map = row['Maps'];
+	    console.log(map);
 	    var img = row ['Images'].split(',');
 	    for (i in img){
 	    	img[i] = img[i].substr(2, img[i].length-3);
 	    }
 	    img[img.length-1] = img[img.length-1].substr(0, img[i].length-1);
 	    console.log(spot);
-	    res.render('destination', { city: city, spot: spot, description: dscrp , img: img})
+	    res.render('destination', { city: city, spot: spot, description: dscrp , img: img, map: map})
 	    return;
 	    }
 	  })
