@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
-app.set('views', path.join('/home/shashank/SOI/soi/explorers/', 'views'));
+app.set('views', path.resolve('views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -21,8 +21,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join('/home/shashank/SOI/soi/explorers/', 'public')));
-app.use('/node_modules', express.static('/home/shashank/SOI/soi/explorers/' + 'node_modules/'));
+app.use(express.static(path.resolve('public')));
+app.use('/node_modules', express.static(path.resolve('node_modules')));
 // configure the app to use bodyParser()
 app.use(bodyParser.urlencoded({
     extended: true
