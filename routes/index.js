@@ -21,8 +21,9 @@ router.get('/about', function (req, res) {
   res.render('about', { title: 'ejs' })
 });
 
-router.get('/destinput', function (req, res) {
-  res.render('INDIA', { title: 'ejs' })
+router.get('/destinput/:id', function (req, res) {
+	var region = req.params.id.toUpperCase();
+  res.render(region, { title: 'ejs' })
 });
 
 router.get('/city/:id', function (req, res) {
@@ -35,8 +36,10 @@ router.get('/destination/:id', function(req, res) {
 	//code for search
 	/*var input = req.body.ipcity.toLowerCase();*/ 
 	var input = capital_letter(req.params.id);
+	var country = req.query.country.toLowerCase();
+	//console.log(country);
 	var spot;
-	fs.createReadStream('data/data_india.csv')
+	fs.createReadStream('data/data_'+country+'.csv')
 	  .pipe(csv())
 	  .on('data', (row) => {
 	    spot = row['TouristSpot'];
@@ -73,7 +76,7 @@ router.get('/destination/:id', function(req, res) {
 	    meal[meal.length-1] = meal[meal.length-1].substr(0, meal[i].length-1);
 
 	    console.log(spot);
-	    res.render('spot', { city: city, spot: spot, description: dscrp , img: img, map: map, hotels: hotels, meal: meal, attract: attract})
+	   res.render('spot', { city: city, spot: spot, description: dscrp , img: img, map: map, hotels: hotels, meal: meal, attract: attract})
 	    return;
 	    }
 	  })
