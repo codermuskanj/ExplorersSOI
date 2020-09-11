@@ -1,6 +1,7 @@
 .row-header{
     margin: 0px auto;
     padding: 0px auto;
+    
 }.row-content{
     margin: 0px auto;
     padding: 50px 0px 50px 0px;
@@ -27,4 +28,24 @@ body {
     
     padding: 50px 0px 0px 0px;
     z-index: 0;
+}
+.j1{ 
+    background: rgba(0, 0, 0, 0.2);    
+    font-size: 15px;
+}
+.c{
+    color:white;
+    border-bottom: 0.5px solid black;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color:white;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.4);
+
+}
+
+.dropdown-menu {
+    min-width: 8rem;
+    border-radius: .40rem;
 }

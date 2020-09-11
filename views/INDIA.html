@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/styles.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/INDIA.css">
     <link rel="stylesheet" href="../css/nicepage.css" media="screen">
     <link rel="stylesheet" href="../css/INDIA.css" media="screen">
@@ -43,7 +44,14 @@
              <ul class="navbar-nav mr-auto">
                  <li class="nav-item"><a class="nav-link" href="/"><span class="fa fa-home"> </span>Home</a></li>
                  <li class="nav-item"><a class="nav-link" href="/about"><span class="fa fa-info"> </span>About</a></li>
-                 <li class="nav-item"><a class="nav-link active" href="/"><span class="fa fa-list fa-lg"> </span>Destination</a></li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list fa-lg"> </span>Destination</a>
+                        <div class="dropdown-menu j1" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item c" href="/destinput/india">India</a>
+                          <a class="dropdown-item c" href="/destinput/usa">USA</a>
+                          <a class="dropdown-item c" href="/destinput/europe">Europe</a>
+                        </div>
+                 </li>
                  <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-address-card fa-lg"> </span>Contact</a></li>
              </ul>
           </div>
