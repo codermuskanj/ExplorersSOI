@@ -12,30 +12,43 @@ function capital_letter(str){
     return str.join(" ");
 }
 
+
+function piechart1(place) {
+	var spawn = require("child_process").spawn;
+	var process = spawn('python',["py/sentiment_analysis.py",place]); 
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'ejs' });
 });
 
+/* GET about page. */
 router.get('/about', function (req, res) {
   res.render('about', { title: 'ejs' })
 });
 
+/* GET region page. */
 router.get('/destinput/:id', function (req, res) {
 	var region = req.params.id.toUpperCase();
   res.render(region, { title: 'ejs' })
 });
 
+/* GET city page. */
 router.get('/city/:id', function (req, res) {
 	var city = req.params.id.toUpperCase();
 	console.log(city);
   res.render(city, { title: 'ejs' })
 });
 
+
+
+/* GET destination page. */
 router.get('/destination/:id', function(req, res) {
 	//code for search
 	/*var input = req.body.ipcity.toLowerCase();*/ 
 	var input = capital_letter(req.params.id);
+	piechart1(input,200);
 	var country = req.query.country.toLowerCase();
 	//console.log(country);
 	var spot;
