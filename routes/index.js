@@ -13,10 +13,7 @@ function capital_letter(str){
 }
 
 
-function piechart1(place) {
-	var spawn = require("child_process").spawn;
-	var process = spawn('python',["py/sentiment_analysis.py",place]); 
-}
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,14 +38,42 @@ router.get('/city/:id', function (req, res) {
   res.render(city, { title: 'ejs' })
 });
 
+/* GET adkjaslkkjd
+router.get('/contact', function(req, res) {
+  var spawn = require("child_process").spawn; 
+  var process = spawn('python',["./py/sentiment_analysis.py"]);
+  process.stdout.on('data', function(data) { 
+        res.send(data.toString()); 
+    } ) 
+});
+*/
+router.get('/pie', function(req, res) {
+	place = req.query.spot;
+	console.log(place);
+	var spawn = require("child_process").spawn;
+	var process = spawn('python',["./py/sentiment_analysis.py",place]);
 
+	var results;
+	process.stdout.on('data', function(data) {
+        results= data.toString().split('\n');
+        results.pop();
+        for (i in results){
+	    	results[i] = results[i].substr(0, 4);
+	    } 
+        
+    } )
+
+    process.on('close', function(data) {
+        res.render('pie',{ results: results, spot: place })
+    })
+
+});
 
 /* GET destination page. */
 router.get('/destination/:id', function(req, res) {
 	//code for search
 	/*var input = req.body.ipcity.toLowerCase();*/ 
 	var input = capital_letter(req.params.id);
-	piechart1(input,200);
 	var country = req.query.country.toLowerCase();
 	//console.log(country);
 	var spot;

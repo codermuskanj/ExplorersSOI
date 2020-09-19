@@ -1,6 +1,7 @@
 import sys,tweepy,csv,re
 from textblob import TextBlob
 import matplotlib.pyplot as plt
+import time
 
 import twitter_credentials
 
@@ -13,23 +14,24 @@ class SentimentAnalysis:
 
     def DownloadData(self):
 
+
         auth = tweepy.OAuthHandler(twitter_credentials.CONSUMER_KEY, twitter_credentials.CONSUMER_SECRET)
         auth.set_access_token(twitter_credentials.ACCESS_TOKEN, twitter_credentials.ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
 
         # input for term to be searched and how many tweets to search
-        searchTerm = 'red fort'
+        searchTerm = sys.argv[1]
         NoOfTerms = 200
-
+        
         # searching for tweets
         self.tweets = tweepy.Cursor(api.search, q=searchTerm, lang = "en").items(NoOfTerms)
 
         # Open/create a file to append data to
-        csvFile = open('result.csv', 'a')
-
+        #csvFile = open('../data/result.csv', 'a')
+        
         # Use csv writer
-        csvWriter = csv.writer(csvFile)
-
+        #csvWriter = csv.writer(csvFile)
+        
 
         # creating some variables to store info
         polarity = 0
@@ -68,8 +70,8 @@ class SentimentAnalysis:
 
 
         # Write to csv and close csv file
-        csvWriter.writerow(self.tweetText)
-        csvFile.close()
+        #csvWriter.writerow(self.tweetText)
+        #csvFile.close()
 
         # finding average of how people are reacting
         positive = self.percentage(positive, NoOfTerms)
@@ -84,27 +86,27 @@ class SentimentAnalysis:
         polarity = polarity / NoOfTerms
 
         # printing out data
-        print("How people are reacting on " + searchTerm + " by analyzing " + str(NoOfTerms) + " tweets.")
-        print()
-        print("General Report: ")
+        #print("How people are reacting on " + searchTerm + " by analyzing " + str(NoOfTerms) + " tweets.")
+        #print()
+        #print("General Report: ")
 
-        if (polarity == 0):
-            print("Neutral")
-        elif (polarity > 0 and polarity <= 0.3):
-            print("Weakly Positive")
-        elif (polarity > 0.3 and polarity <= 0.6):
-            print("Positive")
-        elif (polarity > 0.6 and polarity <= 1):
-            print("Strongly Positive")
-        elif (polarity > -0.3 and polarity <= 0):
-            print("Weakly Negative")
-        elif (polarity > -0.6 and polarity <= -0.3):
-            print("Negative")
-        elif (polarity > -1 and polarity <= -0.6):
-            print("Strongly Negative")
+        # if (polarity == 0):
+        #     print("Neutral")
+        # elif (polarity > 0 and polarity <= 0.3):
+        #     print("Weakly Positive")
+        # elif (polarity > 0.3 and polarity <= 0.6):
+        #     print("Positive")
+        # elif (polarity > 0.6 and polarity <= 1):
+        #     print("Strongly Positive")
+        # elif (polarity > -0.3 and polarity <= 0):
+        #     print("Weakly Negative")
+        # elif (polarity > -0.6 and polarity <= -0.3):
+        #     print("Negative")
+        # elif (polarity > -1 and polarity <= -0.6):
+        #     print("Strongly Negative")
 
-        print()
-        print("Detailed Report: ")
+        #print()
+        #print("Detailed Report: ")
         print(str(positive) + "% people thought it was positive")
         print(str(wpositive) + "% people thought it was weakly positive")
         print(str(spositive) + "% people thought it was strongly positive")
@@ -135,6 +137,7 @@ class SentimentAnalysis:
         plt.title('How people are reacting on ' + searchTerm + ' by analyzing ' + str(noOfSearchTerms) + ' Tweets.')
         plt.axis('equal')
         plt.tight_layout()
+        #plt.show()
         plt.savefig('../public/images/data.png')
 
 
@@ -142,3 +145,4 @@ class SentimentAnalysis:
 if __name__== "__main__":
     sa = SentimentAnalysis()
     sa.DownloadData()
+    

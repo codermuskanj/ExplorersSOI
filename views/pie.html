@@ -4,6 +4,54 @@
 	<title>Piechart</title>
 </head>
 <body>
-	<img src="images/data.png">
+	<%= spot %>
+	<%= results %>
+	<canvas id="pie-chart" width="800" height="450"></canvas>
 </body>
+<script type="text/javascript">
+	var overviewPie = document.getElementById("pie-chart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 10;
+
+var overviewPieChart = {
+    labels: ["Positive", "Weakly Positive", "Strongly Positive", "Negative", "Weakly Negative", "Strongly Negative", "Neutral"],
+    datasets: [
+        {
+            data: <%= results %>
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e59cd","#3e95dc"],
+            borderColor: "#1e72fa",
+            borderWidth: 3
+        }]
+};
+
+var chartOptionsPie = {
+  rotation: -Math.PI,
+  cutoutPercentage:50,
+  circumference: 2*Math.PI,
+  legend: {
+    display:false
+  },
+  title: {
+  	display:true,
+  	text: "MAINTENANCE REQUIRED",
+  	position:'bottom',
+  	fontColor: 'white',
+  	fontSize: 12
+  },
+  animation: {
+    animateRotate: false,
+    animateScale: true
+  }
+};
+
+var pieChartdatisd = new Chart(overviewPie, {
+  type: 'doughnut',
+  data: overviewPieChart,
+  options: chartOptionsPie
+});
+
+
+</script>
+
 </html>
