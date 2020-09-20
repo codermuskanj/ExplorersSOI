@@ -117,6 +117,7 @@
     </header>
     <div class="container">
         <div class="row row-content">
+          <h3>Reviews</h3>
             <iframe id="myframe" src="/load" height="420px" width="60%" style="margin: auto; border:0;" frameborder="0" ></iframe>
               
               <div class="container" style="margin:auto; text-align: center;" >
@@ -156,7 +157,7 @@
 </body>
 <script>
 function myFunction() {
-  setTimeout(function(){ document.getElementById("myframe").src = "/pie?spot=<%= spot %>"; }, 5000);
+  setTimeout(function(){ document.getElementById("myframe").src = "/pie?spot=<%= spot %>"; }, 2000);
 }
 </script>
  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>

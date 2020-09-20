@@ -30,10 +30,10 @@ var overviewPieChart = {
 
 var chartOptionsPie = {
   rotation: -Math.PI,
-  cutoutPercentage:50,
+  cutoutPercentage:70,
   circumference: 2*Math.PI,
   legend: {
-    display:false
+    display:true
   },
   title: {
   	display:true,
@@ -49,7 +49,7 @@ var chartOptionsPie = {
 };
 
 var pieChartdatisd = new Chart(overviewPie, {
-  type: 'doughnut',
+  type: 'pie',
   data: overviewPieChart,
   options: chartOptionsPie
 });
