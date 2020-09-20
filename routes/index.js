@@ -25,6 +25,11 @@ router.get('/about', function (req, res) {
   res.render('about', { title: 'ejs' })
 });
 
+/* GET load page. */
+router.get('/load', function (req, res) {
+  res.render('load', { title: 'ejs' })
+});
+
 /* GET region page. */
 router.get('/destinput/:id', function (req, res) {
 	var region = req.params.id.toUpperCase();
@@ -114,7 +119,7 @@ router.get('/destination/:id', function(req, res) {
 	    meal[meal.length-1] = meal[meal.length-1].substr(0, meal[i].length-1);
 
 	    console.log(spot);
-	   res.render('spot', { city: city, spot: spot, description: dscrp , img: img, map: map, hotels: hotels, meal: meal, attract: attract})
+	   res.render('destination', { city: city, spot: spot, description: dscrp , img: img, map: map, hotels: hotels, meal: meal, attract: attract})
 	    return;
 	    }
 	  })

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
 	<title>Piechart</title>
 </head>
-<body>
-	<%= spot %>
-	<%= results %>
-	<canvas id="pie-chart" width="800" height="450"></canvas>
+<body style="text-align: center;">
+	<p>How people are reacting on <%= spot %> on twitter.</p>
+	<div>
+		<canvas id="pie-chart"></canvas>
+	</div>
+	<p>All values in %</p>
 </body>
 <script type="text/javascript">
 	var overviewPie = document.getElementById("pie-chart");
 
 Chart.defaults.global.defaultFontFamily = "Lato";
-Chart.defaults.global.defaultFontSize = 10;
+Chart.defaults.global.defaultFontSize = 15;
 
 var overviewPieChart = {
-    labels: ["Positive", "Weakly Positive", "Strongly Positive", "Negative", "Weakly Negative", "Strongly Negative", "Neutral"],
+    labels: ["Strongly Positive","Positive", "Weakly Positive", "Neutral", "Weakly Negative","Negative", "Strongly Negative"],
     datasets: [
         {
-            data: <%= results %>
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e59cd","#3e95dc"],
-            borderColor: "#1e72fa",
+            data: [<%= results %>],
+            backgroundColor: ["#52D726", "#FFEC00","#007ED6","#7CDDDD","#C608D1","#FF7300","#FF0000"],
+            borderColor: "#fff",
             borderWidth: 3
         }]
 };

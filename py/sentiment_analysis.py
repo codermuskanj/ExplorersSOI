@@ -107,13 +107,14 @@ class SentimentAnalysis:
 
         #print()
         #print("Detailed Report: ")
+        print(str(spositive) + "% people thought it was strongly positive")
         print(str(positive) + "% people thought it was positive")
         print(str(wpositive) + "% people thought it was weakly positive")
-        print(str(spositive) + "% people thought it was strongly positive")
-        print(str(negative) + "% people thought it was negative")
-        print(str(wnegative) + "% people thought it was weakly negative")
-        print(str(snegative) + "% people thought it was strongly negative")
         print(str(neutral) + "% people thought it was neutral")
+        print(str(wnegative) + "% people thought it was weakly negative")
+        print(str(negative) + "% people thought it was negative")
+        print(str(snegative) + "% people thought it was strongly negative")
+        
 
         self.plotPieChart(positive, wpositive, spositive, negative, wnegative, snegative, neutral, searchTerm, NoOfTerms)
 
