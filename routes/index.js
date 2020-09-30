@@ -52,6 +52,8 @@ router.get('/contact', function(req, res) {
     } ) 
 });
 */
+
+/*Load the analysis of tweets in form of a piechart*/
 router.get('/pie', function(req, res) {
 	place = req.query.spot;
 	console.log(place);
@@ -64,14 +66,11 @@ router.get('/pie', function(req, res) {
         results.pop();
         for (i in results){
 	    	results[i] = results[i].substr(0, 4);
-	    } 
-        
+	    }   
     } )
-
     process.on('close', function(data) {
         res.render('pie',{ results: results, spot: place })
     })
-
 });
 
 /* GET destination page. */
