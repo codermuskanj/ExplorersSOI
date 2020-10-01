@@ -1,15 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Destination Input</title>
-</head>
-<body>
-	<!-- Code for search -->
-	<!-- <form action="/destination" method="post"> 
-        <input type="text" name="ipcity" placeholder="Enter Tourist Spot">
-        <button type="submit" name="submit"> Go </button> 
-    </form>  -->
-    <a href="/destination/red%20fort">Red Fort</a>
-    <a href="/destination/jama%20masjid">Jama Masjid</a>
-</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <title>Get Started</title>
+    <link href="css/input.css" rel="stylesheet" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+      select{
+        font-size: 20px;
+        color: #9a9a9a
+      }
+      option:not(:first-of-type) {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+  	  <nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="color: black;">
+     <div class="container ">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+             <span class="navbar-toggler-icon"></span>
+         </button>
+         <a class="navbar-brand ml-auto" href="#" > Let's Explore </a>
+         <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="/"><span class="fa fa-home"> </span>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about"><span class="fa fa-info"> </span>About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list fa-lg"> </span>Destination</a>
+                        <div class="dropdown-menu j1" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item c" href="/destinput/india">India</a>
+                          <a class="dropdown-item c" href="/destinput/usa">USA</a>
+                          <a class="dropdown-item c" href="/destinput/asia">Asia</a>
+                          <a class="dropdown-item c" href="/destinput/europe">Europe</a>
+                          <a class="dropdown-item c" href="/destinput/sa">South America</a>
+                          <a class="dropdown-item c" href="/destinput/africa">Africa</a>
+                          <a class="dropdown-item c" href="/destinput/australia">Australia</a>
+                        </div>
+                 </li>
+                <li class="nav-item"><a class="nav-link" href="/ourteam"><span class="fa fa-address-card fa-lg"> </span>Our Team</a></li>
+            </ul>
+         </div>
+     </div>
+    </nav>
+    <div class="s01">
+      <form action="/destin" method="post">
+        <% if( flag == 1){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" style="font-size: 12px;">
+            <strong>Oh no!!</strong> The place you desire to explore hasn't been mapped out yet. <br> Please recheck the name and region.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% } %>
+        <fieldset>
+          <legend>Worry Less, Wander More...</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input type="text" name="ipspot" placeholder="What place do you want to explore?" required="required" />
+          </div>
+            <select name="ipregion" class="input-field second-wrap" required="required">
+              <option value="" disabled selected hidden>Choose Region</option>
+              <option value="india">India</option>
+              <option value="usa">USA</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="southamerica">South America</option>
+              <option value="africa">Africa</option>
+              <option value="australia">Australia</option>
+            </select>
+          
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="submit">Explore</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

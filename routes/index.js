@@ -25,6 +25,11 @@ router.get('/about', function (req, res) {
   res.render('about', { title: 'ejs' })
 });
 
+/* GET about page. */
+router.get('/ourteam', function (req, res) {
+  res.render('ourteam', { title: 'ejs' })
+});
+
 /* GET load page. */
 router.get('/load', function (req, res) {
   res.render('load', { title: 'ejs' })
@@ -34,6 +39,11 @@ router.get('/load', function (req, res) {
 router.get('/destinput/:id', function (req, res) {
 	var region = req.params.id.toUpperCase();
   res.render(region, { title: 'ejs' })
+});
+
+/* GET about page. */
+router.get('/getstarted', function (req, res) {
+  res.render('destinput', { title: 'ejs', flag: 0 })
 });
 
 /* GET city page. */
@@ -71,6 +81,59 @@ router.get('/pie', function(req, res) {
     process.on('close', function(data) {
         res.render('pie',{ results: results, spot: place })
     })
+});
+
+/*POST Destination (Search)*/
+router.post('/destin', function (req, res) {
+  var input = capital_letter(req.body.ipspot);
+  console.log(input);
+  var country = req.body.ipregion;
+  console.log(country);
+  var spot;
+  fs.createReadStream('data/data_'+country+'.csv')
+	  .pipe(csv())
+	  .on('data', (row) => {
+	    spot = row['TouristSpot'];
+	    if(spot == input){
+	    	var city = capital_letter(row['CityName']);
+	    var dscrp = row['Description'];
+	    var map = row['Maps'];
+	    var hotels = row['Hotels'].split(',');;
+	    var attract = row['Attractions'].split(',');;
+	    var meal = row['Meals'].split(',');;
+	    var img = row ['Images'].split(',');
+	    //convert img from str to array
+	    for (i in img){
+	    	img[i] = img[i].substr(2, img[i].length-3);
+	    }
+	    img[img.length-1] = img[img.length-1].substr(0, img[i].length-1);
+
+	    //convert hotel from str to array
+	    for (i in hotels){
+	    	hotels[i] = hotels[i].substr(2, hotels[i].length-3);
+	    }
+	    hotels[hotels.length-1] = hotels[hotels.length-1].substr(0, hotels[i].length-1);
+
+	    //convert attraction from str to array
+	    for (i in attract){
+	    	attract[i] = attract[i].substr(2, attract[i].length-3);
+	    }
+	    attract[attract.length-1] = attract[attract.length-1].substr(0, attract[i].length-1);
+
+	    //convert meal from str to array
+	    for (i in meal){
+	    	meal[i] = meal[i].substr(2, meal[i].length-3);
+	    }
+	    meal[meal.length-1] = meal[meal.length-1].substr(0, meal[i].length-1);
+
+	    console.log(spot);
+	   res.render('destination', { city: city, spot: spot, description: dscrp , img: img, map: map, hotels: hotels, meal: meal, attract: attract})
+	    return;
+	    }else if(spot == "-----"){
+	    	res.render('destinput', { title: 'ejs', flag: 1 })
+	    }
+	  })
+	 
 });
 
 /* GET destination page. */
