@@ -3,7 +3,7 @@ from textblob import TextBlob
 import matplotlib.pyplot as plt
 import time
 
-import twitter_credentials
+#import twitter_credentials
 
 
 class SentimentAnalysis:
