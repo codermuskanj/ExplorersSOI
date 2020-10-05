@@ -14,3 +14,10 @@ Requirements:
   npm install bootstrap-social
   npm install fontawesome
   npm install popper.js
+
+PROJECT REPOSITORY LINK- https://github.com/Rushabh2499/ExplorersSOI
+
+PROJECT VIDEO LINK(YOUTUBE)- https://youtu.be/Aqeyn_c0EEA
+
+PROJECT VIDEO LINK(GOOGLE DRIVE)- https://drive.google.com/file/d/1O4lPqBmYw-hYiWIv5Y4qAwzNZpkGze4A/view?usp=sharing
+
