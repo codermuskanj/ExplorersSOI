@@ -5,11 +5,11 @@
 	<title>Piechart</title>
 </head>
 <body style="text-align: center;">
-	<p>How people are reacting on <%= spot %> on twitter.</p>
+	<p>How people are reacting on <%= spot %> on twitter.All values in %</p>
 	<div>
 		<canvas id="pie-chart"></canvas>
 	</div>
-	<p>All values in %</p>
+	<p style="font-size:10px;">Displaying static values as API Key is not hosted.<br>Production server will run a scheduled script to collect and analyse tweets.</p>
 </body>
 <script type="text/javascript">
 	var overviewPie = document.getElementById("pie-chart");
@@ -36,13 +36,7 @@ var chartOptionsPie = {
   legend: {
     display:true
   },
-  title: {
-  	display:true,
-  	text: "MAINTENANCE REQUIRED",
-  	position:'bottom',
-  	fontColor: 'white',
-  	fontSize: 12
-  },
+  
   animation: {
     animateRotate: false,
     animateScale: true
