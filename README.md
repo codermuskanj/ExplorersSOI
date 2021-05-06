@@ -6,6 +6,7 @@
 # path of all js files should be href = "js/filename.js"
 # path of all image files should be href = "images/filename"
 HOSTED LINK : https://letsexploretheworld.herokuapp.com/
+
 Requirements:
   npm install -g express
   npm install -g express-generator
